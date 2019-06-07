@@ -32,6 +32,13 @@ namespace StadiumTracker.Data
             return new ApplicationDbContext();
         }
 
+        public DbSet<GameEntity> Games { get; set; }
+        public DbSet<LeagueEntity> Leagues { get; set; }
+        public DbSet<StadiumEntity> Stadiums { get; set; }
+        public DbSet<TeamEntity> Teams { get; set; }
+        public DbSet<VisitationEntity> Visitations { get; set; }
+        public DbSet<VisitorEntity> Visitors { get; set; }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder
