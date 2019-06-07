@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace StadiumTracker.Models.LeagueModels
 {
-    public class LeagueListItem
+    public class LeagueDetail
     {
         public int LeagueID { get; set; }
 

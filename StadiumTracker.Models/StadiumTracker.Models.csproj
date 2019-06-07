@@ -43,6 +43,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="LeagueModels\LeagueCreate.cs" />
+    <Compile Include="LeagueModels\LeagueDetail.cs" />
+    <Compile Include="LeagueModels\LeagueEdit.cs" />
     <Compile Include="LeagueModels\LeaugeListItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

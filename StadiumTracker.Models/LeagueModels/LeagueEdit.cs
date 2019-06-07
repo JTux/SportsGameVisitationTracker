@@ -6,12 +6,10 @@ using System.Threading.Tasks;
 
 namespace StadiumTracker.Models.LeagueModels
 {
-    public class LeagueListItem
+    public class LeagueEdit
     {
         public int LeagueID { get; set; }
 
         public string Name { get; set; }
-
-        public bool UserIsOwner { get; set; }
     }
 }
