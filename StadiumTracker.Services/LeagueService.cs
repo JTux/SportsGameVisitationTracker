@@ -34,8 +34,25 @@ namespace StadiumTracker.Services
         }
 
         //-- Get all Leagues
-        
-        //-- Get my leagues
+        public IEnumerable<LeagueListItem> GetAllLeagues()
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var leagues =
+                    ctx.Leagues
+                    .Select(
+                        entity =>
+                        new LeagueListItem
+                        {
+                            LeagueID = entity.LeagueID,
+                            IsUserOwned = entity.OwnerID == _userID,
+                            Name = entity.Name
+                        }
+                    ).ToArray();
+
+                return leagues;
+            }
+        }
 
         //-- Get League by ID
 
