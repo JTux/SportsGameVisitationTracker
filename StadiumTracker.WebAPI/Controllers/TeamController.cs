@@ -10,16 +10,17 @@ using System.Web.Http;
 
 namespace StadiumTracker.WebAPI.Controllers
 {
+    [Authorize]
     public class TeamController : ApiController
     {
-        public IHttpActionResult Get() => Ok(CreateLeagueService().GetAllTeams());
+        public IHttpActionResult Get() => Ok(CreateTeamService().GetAllTeams());
 
         public IHttpActionResult Get(int? id)
         {
             if (id == null)
                 return BadRequest();
 
-            TeamService service = CreateLeagueService();
+            TeamService service = CreateTeamService();
 
             return Ok(service.GetTeamByID(id.Value));
         }
@@ -29,7 +30,7 @@ namespace StadiumTracker.WebAPI.Controllers
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            TeamService service = CreateLeagueService();
+            TeamService service = CreateTeamService();
 
             if (service.CreateTeam(model))
                 return Ok();
@@ -42,7 +43,7 @@ namespace StadiumTracker.WebAPI.Controllers
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            TeamService service = CreateLeagueService();
+            TeamService service = CreateTeamService();
 
             if (service.UpdateExistingTeam(model))
                 return Ok();
@@ -55,7 +56,7 @@ namespace StadiumTracker.WebAPI.Controllers
             if (id == null)
                 return BadRequest();
 
-            TeamService service = CreateLeagueService();
+            TeamService service = CreateTeamService();
 
             if (service.DeleteTeam(id.Value))
                 return Ok();
@@ -63,6 +64,6 @@ namespace StadiumTracker.WebAPI.Controllers
             return InternalServerError();
         }
 
-        private TeamService CreateLeagueService() => new TeamService(Guid.Parse(User.Identity.GetUserId()), User.IsInRole("Admin"));
+        private TeamService CreateTeamService() => new TeamService(Guid.Parse(User.Identity.GetUserId()), User.IsInRole("Admin"));
     }
 }

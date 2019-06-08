@@ -10,6 +10,7 @@ using System.Web.Http;
 
 namespace StadiumTracker.WebAPI.Controllers
 {
+    [Authorize]
     public class LeagueController : ApiController
     {
         public IHttpActionResult Get()

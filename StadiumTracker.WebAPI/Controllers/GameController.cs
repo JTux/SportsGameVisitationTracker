@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNet.Identity;
-using StadiumTracker.Models.StadiumModels;
+using StadiumTracker.Models.GameModels;
 using StadiumTracker.Services;
 using System;
 using System.Collections.Generic;
@@ -11,12 +11,12 @@ using System.Web.Http;
 namespace StadiumTracker.WebAPI.Controllers
 {
     [Authorize]
-    public class StadiumController : ApiController
+    public class GameController : ApiController
     {
         public IHttpActionResult Get()
         {
-            StadiumService service = CreateStadiumService();
-            return Ok(service.GetAllStadiums());
+            GameService service = CreateGameService();
+            return Ok(service.GetAllGames());
         }
 
         public IHttpActionResult Get(int? id)
@@ -24,32 +24,32 @@ namespace StadiumTracker.WebAPI.Controllers
             if (id == null)
                 return BadRequest();
 
-            StadiumService service = CreateStadiumService();
+            GameService service = CreateGameService();
 
-            return Ok(service.GetStadiumByID(id.Value));
+            return Ok(service.GetGameByID(id.Value));
         }
 
-        public IHttpActionResult Post(StadiumCreate model)
+        public IHttpActionResult Post(GameCreate model)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            StadiumService service = CreateStadiumService();
+            GameService service = CreateGameService();
 
-            if (service.CreateStadium(model))
+            if (service.CreateGame(model))
                 return Ok();
 
             return InternalServerError();
         }
 
-        public IHttpActionResult Put(StadiumEdit model)
+        public IHttpActionResult Put(GameEdit model)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            StadiumService service = CreateStadiumService();
+            GameService service = CreateGameService();
 
-            if (service.UpdateExistingStadium(model))
+            if (service.UpdateExistingGame(model))
                 return Ok();
 
             return InternalServerError();
@@ -60,14 +60,14 @@ namespace StadiumTracker.WebAPI.Controllers
             if (id == null)
                 return BadRequest();
 
-            StadiumService service = CreateStadiumService();
+            GameService service = CreateGameService();
 
-            if (service.DeleteStadium(id.Value))
+            if (service.DeleteGame(id.Value))
                 return Ok();
 
             return InternalServerError();
         }
 
-        private StadiumService CreateStadiumService() => new StadiumService(Guid.Parse(User.Identity.GetUserId()), User.IsInRole("Admin"));
+        private GameService CreateGameService() => new GameService(Guid.Parse(User.Identity.GetUserId()), User.IsInRole("Admin"));
     }
 }
