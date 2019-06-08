@@ -45,6 +45,7 @@ namespace StadiumTracker.Services
             {
                 var games =
                     ctx.Games
+                    .Where(game => game.OwnerID == _userID)
                     .Select(
                         entity =>
                         new GameListItem
@@ -70,7 +71,7 @@ namespace StadiumTracker.Services
         {
             using (var ctx = new ApplicationDbContext())
             {
-                var entity = ctx.Games.FirstOrDefault(game => game.GameID == gameID);
+                var entity = ctx.Games.FirstOrDefault(game => game.GameID == gameID && game.OwnerID == _userID);
 
                 if (entity != null)
                 {
@@ -87,7 +88,7 @@ namespace StadiumTracker.Services
                         AwayTeam = teamService.GetTeamByID(entity.AwayTeamID),
                         UserIsOwner = entity.OwnerID == _userID
                     };
-                } 
+                }
                 else
                     return null;
             }

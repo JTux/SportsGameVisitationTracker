@@ -13,6 +13,8 @@ namespace StadiumTracker.Services
         private readonly Guid _userID;
         private readonly bool _userIsAdmin;
 
+        private readonly Guid _publicGuid = new Guid("00000000-0000-0000-0000-000000000000");
+
         public StadiumService(Guid userID, bool userIsAdmin)
         {
             _userID = userID;
@@ -42,6 +44,7 @@ namespace StadiumTracker.Services
             {
                 var stadiums =
                     ctx.Stadiums
+                    .Where(stadium => stadium.OwnerID == _userID || stadium.OwnerID == _publicGuid) 
                     .Select(
                         entity => new StadiumListItem
                         {
@@ -61,7 +64,7 @@ namespace StadiumTracker.Services
         {
             using (var ctx = new ApplicationDbContext())
             {
-                var entity = ctx.Stadiums.FirstOrDefault(stadium => stadium.StadiumID == stadiumID);
+                var entity = ctx.Stadiums.FirstOrDefault(stadium => stadium.StadiumID == stadiumID && (stadium.OwnerID == _userID || stadium.OwnerID == _publicGuid));
 
                 if (entity != null)
                     return new StadiumDetail
