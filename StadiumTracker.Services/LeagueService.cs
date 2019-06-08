@@ -19,7 +19,6 @@ namespace StadiumTracker.Services
             _userIsAdmin = userIsAdmin;
         }
 
-        //-- Create
         public bool CreateLeague(LeagueCreate model)
         {
             var entity = new LeagueEntity
@@ -35,7 +34,6 @@ namespace StadiumTracker.Services
             }
         }
 
-        //-- Get all Leagues
         public IEnumerable<LeagueListItem> GetAllLeagues()
         {
             using (var ctx = new ApplicationDbContext())
@@ -56,7 +54,6 @@ namespace StadiumTracker.Services
             }
         }
 
-        //-- Get League by ID
         public LeagueDetail GetLeagueByID(int leagueID)
         {
             using (var ctx = new ApplicationDbContext())
@@ -75,12 +72,11 @@ namespace StadiumTracker.Services
             }
         }
 
-        //-- Update League
         public bool UpdateExistingLeague(LeagueEdit model)
         {
             using (var ctx = new ApplicationDbContext())
             {
-                var entity = ctx.Leagues.FirstOrDefault(league => league.LeagueID == model.LeagueID);
+                var entity = ctx.Leagues.FirstOrDefault(league => league.LeagueID == model.LeagueID && league.OwnerID == _userID);
 
                 if (entity == null)
                     return false;
@@ -91,7 +87,6 @@ namespace StadiumTracker.Services
             }
         }
 
-        //-- Delete League
         public bool DeleteLeague(int leagueID)
         {
             using (var ctx = new ApplicationDbContext())

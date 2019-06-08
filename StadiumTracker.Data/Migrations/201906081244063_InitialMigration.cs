@@ -131,23 +131,6 @@ namespace StadiumTracker.Data.Migrations
                 .Index(t => t.ApplicationUser_Id);
             
             CreateTable(
-                "dbo.VisitationEntity",
-                c => new
-                    {
-                        VisitationID = c.Int(nullable: false, identity: true),
-                        OwnerID = c.Guid(nullable: false),
-                        GotPin = c.Boolean(nullable: false),
-                        TookPhoto = c.Boolean(nullable: false),
-                        VisitorID = c.Int(nullable: false),
-                        GameID = c.Int(nullable: false),
-                    })
-                .PrimaryKey(t => t.VisitationID)
-                .ForeignKey("dbo.GameEntity", t => t.GameID, cascadeDelete: true)
-                .ForeignKey("dbo.VisitorEntity", t => t.VisitorID, cascadeDelete: true)
-                .Index(t => t.VisitorID)
-                .Index(t => t.GameID);
-            
-            CreateTable(
                 "dbo.VisitorEntity",
                 c => new
                     {
@@ -158,12 +141,29 @@ namespace StadiumTracker.Data.Migrations
                     })
                 .PrimaryKey(t => t.VisitorID);
             
+            CreateTable(
+                "dbo.VisitEntity",
+                c => new
+                    {
+                        VisitID = c.Int(nullable: false, identity: true),
+                        OwnerID = c.Guid(nullable: false),
+                        GotPin = c.Boolean(nullable: false),
+                        TookPhoto = c.Boolean(nullable: false),
+                        VisitorID = c.Int(nullable: false),
+                        GameID = c.Int(nullable: false),
+                    })
+                .PrimaryKey(t => t.VisitID)
+                .ForeignKey("dbo.GameEntity", t => t.GameID, cascadeDelete: true)
+                .ForeignKey("dbo.VisitorEntity", t => t.VisitorID, cascadeDelete: true)
+                .Index(t => t.VisitorID)
+                .Index(t => t.GameID);
+            
         }
         
         public override void Down()
         {
-            DropForeignKey("dbo.VisitationEntity", "VisitorID", "dbo.VisitorEntity");
-            DropForeignKey("dbo.VisitationEntity", "GameID", "dbo.GameEntity");
+            DropForeignKey("dbo.VisitEntity", "VisitorID", "dbo.VisitorEntity");
+            DropForeignKey("dbo.VisitEntity", "GameID", "dbo.GameEntity");
             DropForeignKey("dbo.IdentityUserRole", "ApplicationUser_Id", "dbo.ApplicationUser");
             DropForeignKey("dbo.IdentityUserLogin", "ApplicationUser_Id", "dbo.ApplicationUser");
             DropForeignKey("dbo.IdentityUserClaim", "ApplicationUser_Id", "dbo.ApplicationUser");
@@ -172,8 +172,8 @@ namespace StadiumTracker.Data.Migrations
             DropForeignKey("dbo.GameEntity", "HomeTeamID", "dbo.TeamEntity");
             DropForeignKey("dbo.GameEntity", "AwayTeamID", "dbo.TeamEntity");
             DropForeignKey("dbo.TeamEntity", "LeagueID", "dbo.LeagueEntity");
-            DropIndex("dbo.VisitationEntity", new[] { "GameID" });
-            DropIndex("dbo.VisitationEntity", new[] { "VisitorID" });
+            DropIndex("dbo.VisitEntity", new[] { "GameID" });
+            DropIndex("dbo.VisitEntity", new[] { "VisitorID" });
             DropIndex("dbo.IdentityUserLogin", new[] { "ApplicationUser_Id" });
             DropIndex("dbo.IdentityUserClaim", new[] { "ApplicationUser_Id" });
             DropIndex("dbo.IdentityUserRole", new[] { "ApplicationUser_Id" });
@@ -182,8 +182,8 @@ namespace StadiumTracker.Data.Migrations
             DropIndex("dbo.GameEntity", new[] { "AwayTeamID" });
             DropIndex("dbo.GameEntity", new[] { "HomeTeamID" });
             DropIndex("dbo.GameEntity", new[] { "StadiumID" });
+            DropTable("dbo.VisitEntity");
             DropTable("dbo.VisitorEntity");
-            DropTable("dbo.VisitationEntity");
             DropTable("dbo.IdentityUserLogin");
             DropTable("dbo.IdentityUserClaim");
             DropTable("dbo.ApplicationUser");

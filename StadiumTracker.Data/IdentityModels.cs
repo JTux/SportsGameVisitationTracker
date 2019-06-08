@@ -36,7 +36,7 @@ namespace StadiumTracker.Data
         public DbSet<LeagueEntity> Leagues { get; set; }
         public DbSet<StadiumEntity> Stadiums { get; set; }
         public DbSet<TeamEntity> Teams { get; set; }
-        public DbSet<VisitationEntity> Visitations { get; set; }
+        public DbSet<VisitEntity> Visits { get; set; }
         public DbSet<VisitorEntity> Visitors { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

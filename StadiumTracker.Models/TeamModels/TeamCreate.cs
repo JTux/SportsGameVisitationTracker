@@ -5,14 +5,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace StadiumTracker.Models.LeagueModels
+namespace StadiumTracker.Models.TeamModels
 {
-    public class LeagueEdit
+    public class TeamCreate
     {
         [Required]
-        public int LeagueID { get; set; }
+        public string TeamName { get; set; }
 
         [Required]
-        public string Name { get; set; }
+        public int LeagueID { get; set; }
     }
 }

@@ -8,10 +8,10 @@ using System.Threading.Tasks;
 
 namespace StadiumTracker.Data
 {
-    public class VisitationEntity
+    public class VisitEntity
     {
         [Key]
-        public int VisitationID { get; set; }
+        public int VisitID { get; set; }
 
         [Required]
         public Guid OwnerID { get; set; }
