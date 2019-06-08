@@ -57,6 +57,8 @@ namespace StadiumTracker.Data
         WISCONSIN,
         WEST_VIRGINIA,
         WYOMING,
+        DC,
+        ONTARIO,
         OTHER
     }
 }
