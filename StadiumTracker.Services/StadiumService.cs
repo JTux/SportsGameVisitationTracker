@@ -10,8 +10,8 @@ namespace StadiumTracker.Services
 {
     public class StadiumService
     {
-        private Guid _userID;
-        private bool _userIsAdmin;
+        private readonly Guid _userID;
+        private readonly bool _userIsAdmin;
 
         public StadiumService(Guid userID, bool userIsAdmin)
         {

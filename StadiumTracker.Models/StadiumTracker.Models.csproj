@@ -59,10 +59,13 @@
     <Compile Include="TeamModels\TeamDetail.cs" />
     <Compile Include="TeamModels\TeamEdit.cs" />
     <Compile Include="TeamModels\TeamListItem.cs" />
+    <Compile Include="VisitorModels\VisitorCreate.cs" />
+    <Compile Include="VisitorModels\VisitorDetail.cs" />
+    <Compile Include="VisitorModels\VisitorEdit.cs" />
+    <Compile Include="VisitorModels\VisitorListItem.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="VisitModels\" />
-    <Folder Include="VisitorModels\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\StadiumTracker.Data\StadiumTracker.Data.csproj">
