@@ -45,6 +45,7 @@ namespace StadiumTracker.Services
                         entity => new TeamListItem
                         {
                             TeamID = entity.TeamID,
+                            TeamName = entity.TeamName,
                             LeagueName = entity.League.Name,
                             UserIsOwner = entity.OwnerID == _userID
                         }

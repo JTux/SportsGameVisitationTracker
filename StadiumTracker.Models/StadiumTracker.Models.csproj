@@ -42,6 +42,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GameModels\GameCreate.cs" />
+    <Compile Include="GameModels\GameDetail.cs" />
+    <Compile Include="GameModels\GameEdit.cs" />
+    <Compile Include="GameModels\GameListItem.cs" />
     <Compile Include="LeagueModels\LeagueCreate.cs" />
     <Compile Include="LeagueModels\LeagueDetail.cs" />
     <Compile Include="LeagueModels\LeagueEdit.cs" />
@@ -57,7 +61,6 @@
     <Compile Include="TeamModels\TeamListItem.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="GameModels\" />
     <Folder Include="VisitModels\" />
     <Folder Include="VisitorModels\" />
   </ItemGroup>

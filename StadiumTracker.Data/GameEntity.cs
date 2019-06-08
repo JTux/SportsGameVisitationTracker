@@ -17,7 +17,10 @@ namespace StadiumTracker.Data
         public Guid OwnerID { get; set; }
 
         [Required]
-        public DateTime DateOfGame { get; set; }
+        public DateTimeOffset DateOfGame { get; set; }
+
+        [Required]
+        public bool HomeTeamWon { get; set; }
 
         [ForeignKey(nameof(Stadium))]
         public int StadiumID { get; set; }
