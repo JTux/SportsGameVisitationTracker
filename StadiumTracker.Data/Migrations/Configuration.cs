@@ -21,12 +21,12 @@ namespace StadiumTracker.Data.Migrations
 
             Guid publicGuid = new Guid("00000000-0000-0000-0000-000000000000");
 
-            context.Leagues.AddOrUpdate(leagues =>
+            context.Leagues.AddOrUpdate(leagues => leagues.LeagueID,
                 new LeagueEntity { LeagueID = 1, Name = "American", OwnerID = publicGuid },
                 new LeagueEntity { LeagueID = 2, Name = "National", OwnerID = publicGuid }
             );
 
-            context.Teams.AddOrUpdate(teams =>
+            context.Teams.AddOrUpdate(teams => teams.TeamID,
                 new TeamEntity { TeamID = 1, TeamName = "Baltimore Orioles", LeagueID = 1, OwnerID = publicGuid },
                 new TeamEntity { TeamID = 2, TeamName = "Boston Red Sox", LeagueID = 1, OwnerID = publicGuid },
                 new TeamEntity { TeamID = 3, TeamName = "Chicago White Sox", LeagueID = 1, OwnerID = publicGuid },
@@ -59,7 +59,7 @@ namespace StadiumTracker.Data.Migrations
                 new TeamEntity { TeamID = 30, TeamName = "Washington Nationals", LeagueID = 2, OwnerID = publicGuid }
             );
 
-            context.Stadiums.AddOrUpdate(stadiums =>
+            context.Stadiums.AddOrUpdate(stadiums => stadiums.StadiumID,
                 new StadiumEntity {StadiumID = 1, StadiumName = "Oriole Park at Camden Yards", CityName = "Baltimore", StateName = StateEnum.MARYLAND, OwnerID = publicGuid },
                 new StadiumEntity {StadiumID = 2, StadiumName = "Fenway Park", CityName = "Boston", StateName = StateEnum.MASSACHUSETTS, OwnerID = publicGuid },
                 new StadiumEntity {StadiumID = 3, StadiumName = "Guaranteed Rate Field", CityName = "Chicago", StateName = StateEnum.ILLINOIS, OwnerID = publicGuid },
