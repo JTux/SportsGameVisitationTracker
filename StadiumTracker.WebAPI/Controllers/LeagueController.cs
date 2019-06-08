@@ -19,11 +19,14 @@ namespace StadiumTracker.WebAPI.Controllers
             return Ok(leagues);
         }
 
-        public IHttpActionResult Get(int id)
+        public IHttpActionResult Get(int? id)
         {
+            if (id == null)
+                return BadRequest();
+
             LeagueService service = CreateLeagueService();
-            var league = service.GetLeagueByID(id);
-            return Ok(league);
+
+            return Ok(service.GetLeagueByID(id.Value));
         }
 
         public IHttpActionResult Post(LeagueCreate model)
