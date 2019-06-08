@@ -31,7 +31,7 @@ namespace StadiumTracker.WebMVC
                 roleManager.Create(role);
 
                 var user = new ApplicationUser();
-                user.UserName = "admin";
+                user.UserName = "admin@example.com";
                 user.Email = "admin@example.com";
 
                 string userPWD = "password";
