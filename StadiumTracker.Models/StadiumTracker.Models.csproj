@@ -59,14 +59,16 @@
     <Compile Include="TeamModels\TeamDetail.cs" />
     <Compile Include="TeamModels\TeamEdit.cs" />
     <Compile Include="TeamModels\TeamListItem.cs" />
+    <Compile Include="VisitModels\VisitCreate.cs" />
+    <Compile Include="VisitModels\VisitDetail.cs" />
+    <Compile Include="VisitModels\VisitEdit.cs" />
+    <Compile Include="VisitModels\VisitListItem.cs" />
     <Compile Include="VisitorModels\VisitorCreate.cs" />
     <Compile Include="VisitorModels\VisitorDetail.cs" />
     <Compile Include="VisitorModels\VisitorEdit.cs" />
     <Compile Include="VisitorModels\VisitorListItem.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="VisitModels\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\StadiumTracker.Data\StadiumTracker.Data.csproj">
       <Project>{3188CFF6-A322-4E28-9621-82C10C8B4245}</Project>
