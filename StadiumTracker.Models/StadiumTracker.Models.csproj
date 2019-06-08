@@ -48,6 +48,9 @@
     <Compile Include="LeagueModels\LeaugeListItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StadiumModels\StadiumCreate.cs" />
+    <Compile Include="StadiumModels\StadiumDetail.cs" />
+    <Compile Include="StadiumModels\StadiumEdit.cs" />
+    <Compile Include="StadiumModels\StadiumListItem.cs" />
     <Compile Include="TeamModels\TeamCreate.cs" />
     <Compile Include="TeamModels\TeamDetail.cs" />
     <Compile Include="TeamModels\TeamEdit.cs" />
