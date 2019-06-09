@@ -21,6 +21,37 @@ namespace StadiumTracker.Services
             _userIsAdmin = userIsAdmin;
         }
 
+        public bool CheckDependencyAccess(TeamCreate model)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var ownedLeague = ctx.Leagues.FirstOrDefault(league => league.LeagueID == model.LeagueID && (league.OwnerID == _userID || league.OwnerID == _publicGuid));
+
+                if (ownedLeague == null)
+                    return false;
+
+                return true;
+            }
+        }
+
+        public bool CheckDependencyAccess(TeamEdit model)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var ownedTeam = ctx.Teams.FirstOrDefault(team => team.TeamID == model.TeamID && (team.OwnerID == _userID || team.OwnerID == _publicGuid));
+
+                if (ownedTeam == null)
+                    return false;
+
+                var ownedLeague = ctx.Leagues.FirstOrDefault(league => league.LeagueID == model.LeagueID && (league.OwnerID == _userID || league.OwnerID == _publicGuid));
+
+                if (ownedLeague == null)
+                    return false;
+
+                return true;
+            }
+        }
+
         public bool CreateTeam(TeamCreate model)
         {
             var entity = new TeamEntity
@@ -94,7 +125,7 @@ namespace StadiumTracker.Services
             }
         }
 
-        public bool DeleteTeam (int teamID)
+        public bool DeleteTeam(int teamID)
         {
             using (var ctx = new ApplicationDbContext())
             {

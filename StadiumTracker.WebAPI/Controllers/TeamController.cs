@@ -32,6 +32,9 @@ namespace StadiumTracker.WebAPI.Controllers
 
             TeamService service = CreateTeamService();
 
+            if (!service.CheckDependencyAccess(model))
+                return BadRequest("Inaccessible dependency");
+
             if (service.CreateTeam(model))
                 return Ok();
 
@@ -44,6 +47,9 @@ namespace StadiumTracker.WebAPI.Controllers
                 return BadRequest(ModelState);
 
             TeamService service = CreateTeamService();
+
+            if (!service.CheckDependencyAccess(model))
+                return BadRequest("Inaccessible dependency");
 
             if (service.UpdateExistingTeam(model))
                 return Ok();
