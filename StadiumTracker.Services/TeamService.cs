@@ -80,7 +80,7 @@ namespace StadiumTracker.Services
                         {
                             TeamID = entity.TeamID,
                             TeamName = entity.TeamName,
-                            LeagueName = entity.League.Name,
+                            LeagueName = entity.League.LeagueName,
                             UserIsOwner = entity.OwnerID == _userID
                         }
                     ).ToArray();
@@ -101,7 +101,7 @@ namespace StadiumTracker.Services
                         TeamID = entity.TeamID,
                         TeamName = entity.TeamName,
                         LeagueID = entity.LeagueID,
-                        LeagueName = entity.League.Name,
+                        LeagueName = entity.League.LeagueName,
                         UserIsOwner = entity.OwnerID == _userID
                     };
                 else

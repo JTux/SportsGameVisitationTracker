@@ -22,8 +22,8 @@ namespace StadiumTracker.Data.Migrations
             Guid publicGuid = new Guid("00000000-0000-0000-0000-000000000000");
 
             context.Leagues.AddOrUpdate(leagues => leagues.LeagueID,
-                new LeagueEntity { LeagueID = 1, Name = "American", OwnerID = publicGuid },
-                new LeagueEntity { LeagueID = 2, Name = "National", OwnerID = publicGuid }
+                new LeagueEntity { LeagueID = 1, LeagueName = "American", OwnerID = publicGuid },
+                new LeagueEntity { LeagueID = 2, LeagueName = "National", OwnerID = publicGuid }
             );
 
             context.Teams.AddOrUpdate(teams => teams.TeamID,

@@ -16,6 +16,6 @@ namespace StadiumTracker.Data
         public Guid OwnerID { get; set; }
 
         [Required]
-        public string Name { get; set; }
+        public string LeagueName { get; set; }
     }
 }

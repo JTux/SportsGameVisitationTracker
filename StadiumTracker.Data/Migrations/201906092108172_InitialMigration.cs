@@ -46,7 +46,7 @@ namespace StadiumTracker.Data.Migrations
                     {
                         LeagueID = c.Int(nullable: false, identity: true),
                         OwnerID = c.Guid(nullable: false),
-                        Name = c.String(nullable: false),
+                        LeagueName = c.String(nullable: false),
                     })
                 .PrimaryKey(t => t.LeagueID);
             

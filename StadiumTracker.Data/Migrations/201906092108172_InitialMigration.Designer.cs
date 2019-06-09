@@ -13,7 +13,7 @@ namespace StadiumTracker.Data.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201906081943288_InitialMigration"; }
+            get { return "201906092108172_InitialMigration"; }
         }
         
         string IMigrationMetadata.Source

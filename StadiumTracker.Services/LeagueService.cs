@@ -25,7 +25,7 @@ namespace StadiumTracker.Services
         {
             var entity = new LeagueEntity
             {
-                Name = model.Name,
+                LeagueName = model.LeagueName,
                 OwnerID = _userID
             };
 
@@ -49,7 +49,7 @@ namespace StadiumTracker.Services
                         {
                             LeagueID = entity.LeagueID,
                             UserIsOwner = entity.OwnerID == _userID,
-                            Name = entity.Name
+                            LeagueName = entity.LeagueName
                         }
                     ).ToArray();
 
@@ -68,7 +68,7 @@ namespace StadiumTracker.Services
                     return new LeagueDetail
                     {
                         LeagueID = entity.LeagueID,
-                        Name = entity.Name,
+                        LeagueName = entity.LeagueName,
                         UserIsOwner = entity.OwnerID == _userID
                     };
                 else
@@ -85,7 +85,7 @@ namespace StadiumTracker.Services
                 if (entity == null)
                     return false;
 
-                entity.Name = model.Name;
+                entity.LeagueName = model.LeagueName;
 
                 return ctx.SaveChanges() == 1;
             }
