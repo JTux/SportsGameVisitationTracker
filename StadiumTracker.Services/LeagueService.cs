@@ -53,7 +53,9 @@ namespace StadiumTracker.Services
                         }
                     ).ToArray();
 
-                return leagues;
+                var orderedLeagues = leagues.OrderBy(league => league.LeagueName).ToArray();
+
+                return orderedLeagues;
             }
         }
 

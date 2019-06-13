@@ -59,7 +59,9 @@ namespace StadiumTracker.Services
                         }
                     ).ToArray();
 
-                return visits;
+                var orderedVisits = visits.OrderBy(visit => visit.Game.DateOfGame).ToArray();
+
+                return orderedVisits;
             }
         }
 

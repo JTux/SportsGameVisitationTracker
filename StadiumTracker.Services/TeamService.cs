@@ -86,7 +86,9 @@ namespace StadiumTracker.Services
                         }
                     ).ToArray();
 
-                return teams;
+                var orderedTeams = teams.OrderBy(team => team.TeamName).ToArray();
+
+                return orderedTeams;
             }
         }
 

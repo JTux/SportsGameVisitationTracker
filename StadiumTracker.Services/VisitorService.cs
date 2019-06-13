@@ -39,7 +39,7 @@ namespace StadiumTracker.Services
         {
             using (var ctx = new ApplicationDbContext())
             {
-                var games =
+                var visitors =
                     ctx.Visitors
                     .Where(visitor => visitor.OwnerID == _userID)
                     .Select(
@@ -53,7 +53,9 @@ namespace StadiumTracker.Services
                         }
                     ).ToArray();
 
-                return games;
+                var orderedVisitors = visitors.OrderBy(visitor => visitor.FullName);
+
+                return orderedVisitors;
             }
         }
 
