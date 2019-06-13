@@ -1,4 +1,5 @@
-﻿using System;
+﻿using StadiumTracker.Models.TeamModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,6 +12,8 @@ namespace StadiumTracker.Models.LeagueModels
         public int LeagueID { get; set; }
 
         public string LeagueName { get; set; }
+
+        public List<TeamDetail> MemberTeams { get; set; }
 
         public bool UserIsOwner { get; set; }
     }

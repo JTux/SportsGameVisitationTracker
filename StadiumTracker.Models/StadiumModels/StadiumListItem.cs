@@ -12,7 +12,7 @@ namespace StadiumTracker.Models.StadiumModels
         public int StadiumID { get; set; }
         public string StadiumName { get; set; }
         public string CityName { get; set; }
-        public StateEnum StateName { get; set; }
+        public string StateName { get; set; }
         public bool UserIsOwner { get; set; }
     }
 }

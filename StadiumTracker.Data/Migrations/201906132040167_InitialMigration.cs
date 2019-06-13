@@ -58,7 +58,7 @@ namespace StadiumTracker.Data.Migrations
                         OwnerID = c.Guid(nullable: false),
                         StadiumName = c.String(nullable: false),
                         CityName = c.String(nullable: false),
-                        StateName = c.Int(nullable: false),
+                        StateName = c.String(nullable: false),
                     })
                 .PrimaryKey(t => t.StadiumID);
             

@@ -1,5 +1,6 @@
 ﻿using StadiumTracker.Data;
 using StadiumTracker.Models.LeagueModels;
+using StadiumTracker.Models.TeamModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -67,12 +68,27 @@ namespace StadiumTracker.Services
                     .FirstOrDefault(league => league.LeagueID == leagueID && (league.OwnerID == _userID || league.OwnerID == _publicGuid));
 
                 if (entity != null)
+                {
+                    var memberTeams =
+                        ctx.Teams
+                            .Where(team => team.LeagueID == entity.LeagueID)
+                            .Select(team => new TeamDetail
+                            {
+                                LeagueID = team.LeagueID,
+                                LeagueName = team.League.LeagueName,
+                                TeamID = team.TeamID,
+                                TeamName = team.TeamName,
+                                UserIsOwner = team.OwnerID == _userID
+                            }).ToList();
+
                     return new LeagueDetail
                     {
                         LeagueID = entity.LeagueID,
                         LeagueName = entity.LeagueName,
-                        UserIsOwner = entity.OwnerID == _userID
+                        UserIsOwner = entity.OwnerID == _userID,
+                        MemberTeams = memberTeams
                     };
+                }
                 else
                     return null;
             }

@@ -15,10 +15,6 @@ namespace StadiumTracker.Data.Migrations
         protected override void Seed(StadiumTracker.Data.ApplicationDbContext context)
         {
             //  This method will be called after migrating to the latest version.
-
-            //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
-            //  to avoid creating duplicate seed data.
-
             Guid publicGuid = new Guid("00000000-0000-0000-0000-000000000000");
 
             context.Leagues.AddOrUpdate(leagues => leagues.LeagueID,
@@ -59,38 +55,40 @@ namespace StadiumTracker.Data.Migrations
                 new TeamEntity { TeamID = 30, TeamName = "Washington Nationals", LeagueID = 2, OwnerID = publicGuid }
             );
 
+
             context.Stadiums.AddOrUpdate(stadiums => stadiums.StadiumID,
-                new StadiumEntity {StadiumID = 1, StadiumName = "Oriole Park at Camden Yards", CityName = "Baltimore", StateName = StateEnum.MARYLAND, OwnerID = publicGuid },
-                new StadiumEntity {StadiumID = 2, StadiumName = "Fenway Park", CityName = "Boston", StateName = StateEnum.MASSACHUSETTS, OwnerID = publicGuid },
-                new StadiumEntity {StadiumID = 3, StadiumName = "Guaranteed Rate Field", CityName = "Chicago", StateName = StateEnum.ILLINOIS, OwnerID = publicGuid },
-                new StadiumEntity {StadiumID = 4, StadiumName = "Progressive Field", CityName = "Cleveland", StateName = StateEnum.OHIO, OwnerID = publicGuid },
-                new StadiumEntity {StadiumID = 5, StadiumName = "Comerica Park", CityName = "Detroit", StateName = StateEnum.MICHIGAN, OwnerID = publicGuid },
-                new StadiumEntity {StadiumID = 6, StadiumName = "Minute Maid Park", CityName = "Houston", StateName = StateEnum.TEXAS, OwnerID = publicGuid },
-                new StadiumEntity {StadiumID = 7, StadiumName = "Kauffman Stadium", CityName = "Kansas City", StateName = StateEnum.MISSOURI, OwnerID = publicGuid },
-                new StadiumEntity {StadiumID = 8, StadiumName = "Angel Stadium", CityName = "Anaheim", StateName = StateEnum.CALIFORNIA, OwnerID = publicGuid },
-                new StadiumEntity {StadiumID = 9, StadiumName = "Target Field", CityName = "Minneapolis", StateName = StateEnum.MINNESOTA, OwnerID = publicGuid },
-                new StadiumEntity {StadiumID = 10, StadiumName = "Yankee Stadium", CityName = "Bronx", StateName = StateEnum.NEW_YORK, OwnerID = publicGuid },
-                new StadiumEntity {StadiumID = 11, StadiumName = "Oakland Coliseum", CityName = "Oakland", StateName = StateEnum.CALIFORNIA, OwnerID = publicGuid },
-                new StadiumEntity {StadiumID = 12, StadiumName = "T-Mobile Park", CityName = "Seattle", StateName = StateEnum.WASHINGTON, OwnerID = publicGuid },
-                new StadiumEntity {StadiumID = 13, StadiumName = "Tropicana Field", CityName = "St. Petersburg", StateName = StateEnum.FLORIDA, OwnerID = publicGuid },
-                new StadiumEntity {StadiumID = 14, StadiumName = "Globe Life Park in Arlington", CityName = "Arlington", StateName = StateEnum.TEXAS, OwnerID = publicGuid },
-                new StadiumEntity {StadiumID = 15, StadiumName = "Rogers Centre", CityName = "Toronto", StateName = StateEnum.ONTARIO, OwnerID = publicGuid },
-                new StadiumEntity {StadiumID = 16, StadiumName = "Chase Field", CityName = "Phoenix", StateName = StateEnum.ARIZONA, OwnerID = publicGuid },
-                new StadiumEntity {StadiumID = 17, StadiumName = "SunTrust Park", CityName = "Atlanta", StateName = StateEnum.GEORGIA, OwnerID = publicGuid },
-                new StadiumEntity {StadiumID = 18, StadiumName = "Wrigley Field", CityName = "Chicago", StateName = StateEnum.ILLINOIS, OwnerID = publicGuid },
-                new StadiumEntity {StadiumID = 19, StadiumName = "Great American Ball Park", CityName = "Cincinnati", StateName = StateEnum.OHIO, OwnerID = publicGuid },
-                new StadiumEntity {StadiumID = 20, StadiumName = "Coors Field", CityName = "Denver", StateName = StateEnum.COLORADO, OwnerID = publicGuid },
-                new StadiumEntity {StadiumID = 21, StadiumName = "Dodger Stadium", CityName = "Los Angeles", StateName = StateEnum.CALIFORNIA, OwnerID = publicGuid },
-                new StadiumEntity {StadiumID = 22, StadiumName = "Marlins Park", CityName = "Miami", StateName = StateEnum.FLORIDA, OwnerID = publicGuid },
-                new StadiumEntity {StadiumID = 23, StadiumName = "Miller Park", CityName = "Milwaukee", StateName = StateEnum.WISCONSIN, OwnerID = publicGuid },
-                new StadiumEntity {StadiumID = 24, StadiumName = "Citi Field", CityName = "Flushing", StateName = StateEnum.NEW_YORK, OwnerID = publicGuid },
-                new StadiumEntity {StadiumID = 25, StadiumName = "Citizens Bank Park", CityName = "Philadelphia", StateName = StateEnum.PENNSYLVANIA, OwnerID = publicGuid },
-                new StadiumEntity {StadiumID = 26, StadiumName = "PNC Park", CityName = "Pittsburgh", StateName = StateEnum.PENNSYLVANIA, OwnerID = publicGuid },
-                new StadiumEntity {StadiumID = 27, StadiumName = "Petco Park", CityName = "San Diego", StateName = StateEnum.CALIFORNIA, OwnerID = publicGuid },
-                new StadiumEntity {StadiumID = 28, StadiumName = "Oracle Park", CityName = "San Francisco", StateName = StateEnum.CALIFORNIA, OwnerID = publicGuid },
-                new StadiumEntity {StadiumID = 29, StadiumName = "Busch Stadium", CityName = "St. Louis", StateName = StateEnum.MISSOURI, OwnerID = publicGuid },
-                new StadiumEntity {StadiumID = 30, StadiumName = "Nationals Park", CityName = "Washington", StateName = StateEnum.DC, OwnerID = publicGuid }
+                new StadiumEntity { StadiumID = 1, StadiumName = "Oriole Park at Camden Yards", CityName = "Baltimore", StateName = "Maryland", OwnerID = publicGuid },
+                new StadiumEntity { StadiumID = 2, StadiumName = "Fenway Park", CityName = "Boston", StateName = "Massachusetts", OwnerID = publicGuid },
+                new StadiumEntity { StadiumID = 3, StadiumName = "Guaranteed Rate Field", CityName = "Chicago", StateName = "Illinois", OwnerID = publicGuid },
+                new StadiumEntity { StadiumID = 4, StadiumName = "Progressive Field", CityName = "Cleveland", StateName = "Ohio", OwnerID = publicGuid },
+                new StadiumEntity { StadiumID = 5, StadiumName = "Comerica Park", CityName = "Detroit", StateName = "Michigan", OwnerID = publicGuid },
+                new StadiumEntity { StadiumID = 6, StadiumName = "Minute Maid Park", CityName = "Houston", StateName = "Texas", OwnerID = publicGuid },
+                new StadiumEntity { StadiumID = 7, StadiumName = "Kauffman Stadium", CityName = "Kansas City", StateName = "Missouri", OwnerID = publicGuid },
+                new StadiumEntity { StadiumID = 8, StadiumName = "Angel Stadium", CityName = "Anaheim", StateName = "California", OwnerID = publicGuid },
+                new StadiumEntity { StadiumID = 9, StadiumName = "Target Field", CityName = "Minneapolis", StateName = "Minnesota", OwnerID = publicGuid },
+                new StadiumEntity { StadiumID = 10, StadiumName = "Yankee Stadium", CityName = "Bronx", StateName = "New York", OwnerID = publicGuid },
+                new StadiumEntity { StadiumID = 11, StadiumName = "Oakland Coliseum", CityName = "Oakland", StateName = "California", OwnerID = publicGuid },
+                new StadiumEntity { StadiumID = 12, StadiumName = "T-Mobile Park", CityName = "Seattle", StateName = "Washington", OwnerID = publicGuid },
+                new StadiumEntity { StadiumID = 13, StadiumName = "Tropicana Field", CityName = "St. Petersburg", StateName = "Florida", OwnerID = publicGuid },
+                new StadiumEntity { StadiumID = 14, StadiumName = "Globe Life Park in Arlington", CityName = "Arlington", StateName = "Texas", OwnerID = publicGuid },
+                new StadiumEntity { StadiumID = 15, StadiumName = "Rogers Centre", CityName = "Toronto", StateName = "Ontario", OwnerID = publicGuid },
+                new StadiumEntity { StadiumID = 16, StadiumName = "Chase Field", CityName = "Phoenix", StateName = "Arizona", OwnerID = publicGuid },
+                new StadiumEntity { StadiumID = 17, StadiumName = "SunTrust Park", CityName = "Atlanta", StateName = "Georgia", OwnerID = publicGuid },
+                new StadiumEntity { StadiumID = 18, StadiumName = "Wrigley Field", CityName = "Chicago", StateName = "Illinois", OwnerID = publicGuid },
+                new StadiumEntity { StadiumID = 19, StadiumName = "Great American Ball Park", CityName = "Cincinnati", StateName = "Ohio", OwnerID = publicGuid },
+                new StadiumEntity { StadiumID = 20, StadiumName = "Coors Field", CityName = "Denver", StateName = "Colorado", OwnerID = publicGuid },
+                new StadiumEntity { StadiumID = 21, StadiumName = "Dodger Stadium", CityName = "Los Angeles", StateName = "California", OwnerID = publicGuid },
+                new StadiumEntity { StadiumID = 22, StadiumName = "Marlins Park", CityName = "Miami", StateName = "Florida", OwnerID = publicGuid },
+                new StadiumEntity { StadiumID = 23, StadiumName = "Miller Park", CityName = "Milwaukee", StateName = "Wisconsin", OwnerID = publicGuid },
+                new StadiumEntity { StadiumID = 24, StadiumName = "Citi Field", CityName = "Flushing", StateName = "New York", OwnerID = publicGuid },
+                new StadiumEntity { StadiumID = 25, StadiumName = "Citizens Bank Park", CityName = "Philadelphia", StateName = "Pennsylvania", OwnerID = publicGuid },
+                new StadiumEntity { StadiumID = 26, StadiumName = "PNC Park", CityName = "Pittsburgh", StateName = "Pennsylvania", OwnerID = publicGuid },
+                new StadiumEntity { StadiumID = 27, StadiumName = "Petco Park", CityName = "San Diego", StateName = "California", OwnerID = publicGuid },
+                new StadiumEntity { StadiumID = 28, StadiumName = "Oracle Park", CityName = "San Francisco", StateName = "California", OwnerID = publicGuid },
+                new StadiumEntity { StadiumID = 29, StadiumName = "Busch Stadium", CityName = "St. Louis", StateName = "Missouri", OwnerID = publicGuid },
+                new StadiumEntity { StadiumID = 30, StadiumName = "Nationals Park", CityName = "Washington", StateName = "DC", OwnerID = publicGuid }
             );
         }
+
     }
 }

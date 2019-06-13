@@ -10,14 +10,9 @@ namespace StadiumTracker.Models.StadiumModels
     public class StadiumDetail
     {
         public int StadiumID { get; set; }
-
-        public Guid OwnerID { get; set; }
-
         public string StadiumName { get; set; }
-
         public string CityName { get; set; }
-
-        public StateEnum StateName { get; set; }
+        public string StateName { get; set; }
         public bool UserIsOwner { get; set; }
     }
 }

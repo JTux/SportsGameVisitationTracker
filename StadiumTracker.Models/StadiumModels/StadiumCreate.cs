@@ -17,6 +17,6 @@ namespace StadiumTracker.Models.StadiumModels
         public string CityName { get; set; }
 
         [Required]
-        public StateEnum StateName { get; set; }
+        public string StateName { get; set; }
     }
 }

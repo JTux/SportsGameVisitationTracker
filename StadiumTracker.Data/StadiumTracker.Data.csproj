@@ -57,9 +57,9 @@
     <Compile Include="GameEntity.cs" />
     <Compile Include="IdentityModels.cs" />
     <Compile Include="LeagueEntity.cs" />
-    <Compile Include="Migrations\201906092108172_InitialMigration.cs" />
-    <Compile Include="Migrations\201906092108172_InitialMigration.Designer.cs">
-      <DependentUpon>201906092108172_InitialMigration.cs</DependentUpon>
+    <Compile Include="Migrations\201906132040167_InitialMigration.cs" />
+    <Compile Include="Migrations\201906132040167_InitialMigration.Designer.cs">
+      <DependentUpon>201906132040167_InitialMigration.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -74,8 +74,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201906092108172_InitialMigration.resx">
-      <DependentUpon>201906092108172_InitialMigration.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201906132040167_InitialMigration.resx">
+      <DependentUpon>201906132040167_InitialMigration.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
