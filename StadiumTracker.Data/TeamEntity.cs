@@ -22,5 +22,7 @@ namespace StadiumTracker.Data
         [ForeignKey(nameof(League))]
         public int LeagueID { get; set; }
         public virtual LeagueEntity League { get; set; }
+
+        public string ImageData { get; set; }
     }
 }

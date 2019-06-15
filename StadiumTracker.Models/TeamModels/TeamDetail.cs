@@ -13,5 +13,6 @@ namespace StadiumTracker.Models.TeamModels
         public int LeagueID { get; set; }
         public string LeagueName { get; set; }
         public string TeamName { get; set; }
+        public string ImageData { get; set; }
     }
 }

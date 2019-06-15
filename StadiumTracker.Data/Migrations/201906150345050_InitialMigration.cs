@@ -35,6 +35,7 @@ namespace StadiumTracker.Data.Migrations
                         TeamName = c.String(nullable: false),
                         OwnerID = c.Guid(nullable: false),
                         LeagueID = c.Int(nullable: false),
+                        ImageData = c.String(),
                     })
                 .PrimaryKey(t => t.TeamID)
                 .ForeignKey("dbo.LeagueEntity", t => t.LeagueID, cascadeDelete: true)
