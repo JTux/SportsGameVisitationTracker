@@ -13,5 +13,6 @@ namespace StadiumTracker.Models.TeamModels
         public int LeagueID { get; set; }
         public string LeagueName { get; set; }
         public bool UserIsOwner { get; set; }
+        public string ImageData { get; set; }
     }
 }

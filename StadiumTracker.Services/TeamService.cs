@@ -58,6 +58,7 @@ namespace StadiumTracker.Services
             {
                 TeamName = model.TeamName,
                 LeagueID = model.LeagueID,
+                ImageData = model.ImageData,
                 OwnerID = _userID
             };
 
@@ -82,7 +83,8 @@ namespace StadiumTracker.Services
                             TeamName = entity.TeamName,
                             LeagueID = entity.LeagueID,
                             LeagueName = entity.League.LeagueName,
-                            UserIsOwner = entity.OwnerID == _userID
+                            UserIsOwner = entity.OwnerID == _userID,
+                            ImageData = entity.ImageData
                         }
                     ).ToArray();
 
@@ -105,7 +107,8 @@ namespace StadiumTracker.Services
                         TeamName = entity.TeamName,
                         LeagueID = entity.LeagueID,
                         LeagueName = entity.League.LeagueName,
-                        UserIsOwner = entity.OwnerID == _userID
+                        UserIsOwner = entity.OwnerID == _userID,
+                        ImageData = entity.ImageData
                     };
                 else
                     return null;
@@ -123,6 +126,7 @@ namespace StadiumTracker.Services
 
                 entity.TeamName = model.TeamName;
                 entity.LeagueID = model.LeagueID;
+                entity.ImageData = model.ImageData;
 
                 return ctx.SaveChanges() == 1;
             }

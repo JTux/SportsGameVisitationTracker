@@ -14,5 +14,7 @@ namespace StadiumTracker.Models.TeamModels
 
         [Required]
         public int LeagueID { get; set; }
+
+        public string ImageData { get; set; }
     }
 }
