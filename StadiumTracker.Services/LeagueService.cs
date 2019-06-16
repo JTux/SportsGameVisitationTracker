@@ -52,7 +52,7 @@ namespace StadiumTracker.Services
                             UserIsOwner = entity.OwnerID == _userID,
                             LeagueName = entity.LeagueName
                         }
-                    ).ToArray();
+                    ).OrderBy(league => league.LeagueName).ToArray();
 
                 var orderedLeagues = leagues.OrderBy(league => league.LeagueName).ToArray();
 
@@ -78,8 +78,9 @@ namespace StadiumTracker.Services
                                 LeagueName = team.League.LeagueName,
                                 TeamID = team.TeamID,
                                 TeamName = team.TeamName,
+                                ImageData = team.ImageData,
                                 UserIsOwner = team.OwnerID == _userID
-                            }).ToList();
+                            }).OrderBy(team => team.TeamName).ToList();
 
                     return new LeagueDetail
                     {

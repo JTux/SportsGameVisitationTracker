@@ -44,7 +44,7 @@ namespace StadiumTracker.Services
             {
                 var stadiums =
                     ctx.Stadiums
-                    .Where(stadium => stadium.OwnerID == _userID || stadium.OwnerID == _publicGuid) 
+                    .Where(stadium => stadium.OwnerID == _userID || stadium.OwnerID == _publicGuid)
                     .Select(
                         entity => new StadiumListItem
                         {
@@ -54,7 +54,7 @@ namespace StadiumTracker.Services
                             StateName = entity.StateName,
                             UserIsOwner = entity.OwnerID == _userID
                         }
-                    ).ToArray();
+                    ).OrderBy(stadium => stadium.StadiumName).ToArray();
 
                 return stadiums;
             }
