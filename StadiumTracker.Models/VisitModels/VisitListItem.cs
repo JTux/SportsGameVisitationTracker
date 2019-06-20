@@ -19,5 +19,9 @@ namespace StadiumTracker.Models.VisitModels
         public VisitorDetail Visitor { get; set; }
 
         public GameDetail Game { get; set; }
+
+        public int VisitorID { get; set; }
+
+        public int GameID { get; set; }
     }
 }

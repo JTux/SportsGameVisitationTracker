@@ -54,10 +54,16 @@ namespace StadiumTracker.Services
                             VisitID = entity.VisitID,
                             GotPin = entity.GotPin,
                             TookPhoto = entity.TookPhoto,
-                            Visitor = visitorService.GetVisitorByID(entity.VisitorID),
-                            Game = gameService.GetGameByID(entity.GameID)
+                            VisitorID = entity.VisitorID,
+                            GameID = entity.GameID
                         }
                     ).ToArray();
+
+                foreach(var visit in visits)
+                {
+                    visit.Visitor = visitorService.GetVisitorByID(visit.VisitorID);
+                    visit.Game = gameService.GetGameByID(visit.GameID);
+                }
 
                 var orderedVisits = visits.OrderBy(visit => visit.Game.DateOfGame).ToArray();
 
