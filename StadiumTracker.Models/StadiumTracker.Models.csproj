@@ -46,6 +46,7 @@
     <Compile Include="GameModels\GameDetail.cs" />
     <Compile Include="GameModels\GameEdit.cs" />
     <Compile Include="GameModels\GameListItem.cs" />
+    <Compile Include="GameModels\GameVisitor.cs" />
     <Compile Include="LeagueModels\LeagueCreate.cs" />
     <Compile Include="LeagueModels\LeagueDetail.cs" />
     <Compile Include="LeagueModels\LeagueEdit.cs" />

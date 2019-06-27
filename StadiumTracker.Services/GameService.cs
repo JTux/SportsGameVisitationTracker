@@ -35,7 +35,31 @@ namespace StadiumTracker.Services
             using (var ctx = new ApplicationDbContext())
             {
                 ctx.Games.Add(entity);
-                return ctx.SaveChanges() == 1;
+                if (ctx.SaveChanges() != 1)
+                    return false;
+
+                var createdGame = ctx.Games.FirstOrDefault(g =>
+                    g.OwnerID == _userID &&
+                    g.StadiumID == model.StadiumID &&
+                    g.HomeTeamID == model.HomeTeamID &&
+                    g.AwayTeamID == model.AwayTeamID &&
+                    g.DateOfGame == model.DateOfGame &&
+                    g.HomeTeamWon == model.HomeTeamWon);
+
+                if (createdGame == null)
+                    return false;
+
+                foreach (var visitor in model.Visitors)
+                    ctx.Visits.Add(new VisitEntity
+                    {
+                        OwnerID = _userID,
+                        GameID = createdGame.GameID,
+                        GotPin = visitor.GotPin,
+                        TookPhoto = visitor.TookPhoto,
+                        VisitorID = visitor.VisitorID
+                    });
+
+                return ctx.SaveChanges() == model.Visitors.Count();
             }
         }
 

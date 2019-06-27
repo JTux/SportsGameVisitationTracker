@@ -23,5 +23,7 @@ namespace StadiumTracker.Models.GameModels
 
         [Required]
         public bool HomeTeamWon { get; set; }
+
+        public GameVisitor[] Visitors { get; set; }
     }
 }
