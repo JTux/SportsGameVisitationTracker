@@ -17,5 +17,7 @@ namespace StadiumTracker.Data
 
         [Required]
         public string LeagueName { get; set; }
+
+        public virtual ICollection<TeamEntity> Teams { get; set; }
     }
 }
