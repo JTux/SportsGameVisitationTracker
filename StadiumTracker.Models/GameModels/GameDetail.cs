@@ -1,5 +1,4 @@
-﻿using StadiumTracker.Data;
-using StadiumTracker.Models.StadiumModels;
+﻿using StadiumTracker.Models.StadiumModels;
 using StadiumTracker.Models.TeamModels;
 using System;
 using System.Collections.Generic;

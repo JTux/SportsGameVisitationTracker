@@ -30,10 +30,28 @@ namespace StadiumTracker.Services
                 OwnerID = _userID
             };
 
+            int changeCount = 1;
+
+            if (model.Teams != null)
+            {
+                entity.Teams = new List<TeamEntity>();
+                foreach (LeagueTeamCreate team in model.Teams)
+                {
+                    entity.Teams.Add(
+                        new TeamEntity
+                        {
+                            OwnerID = _userID,
+                            TeamName = team.TeamName,
+                            ImageData = team.ImageData
+                        });
+                }
+                changeCount += entity.Teams.Count;
+            }
+
             using (var ctx = new ApplicationDbContext())
             {
                 ctx.Leagues.Add(entity);
-                return ctx.SaveChanges() == 1;
+                return ctx.SaveChanges() == changeCount;
             }
         }
 

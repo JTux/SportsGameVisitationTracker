@@ -11,5 +11,6 @@ namespace StadiumTracker.Models.LeagueModels
     {
         [Required]
         public string LeagueName { get; set; }
+        public ICollection<LeagueTeamCreate> Teams { get; set; }
     }
 }
