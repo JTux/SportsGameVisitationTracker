@@ -1,4 +1,6 @@
 ﻿using StadiumTracker.Data;
+using StadiumTracker.Models.GameModels;
+using StadiumTracker.Models.VisitModels;
 using StadiumTracker.Models.VisitorModels;
 using System;
 using System.Collections.Generic;
@@ -67,12 +69,23 @@ namespace StadiumTracker.Services
 
                 if (entity != null)
                 {
+                    GameService gameService = new GameService(_userID, _userIsAdmin);
+
+                    var visits = ctx.Visits.Where(visit => visit.VisitorID == entity.VisitorID).ToList();
+                    var games = new List<GameDetail>();
+
+                    foreach (var visit in visits)
+                    {
+                        games.Add(gameService.GetGameByID(visit.GameID));
+                    }
+
                     return new VisitorDetail
                     {
                         VisitorID = entity.VisitorID,
                         FirstName = entity.FirstName,
                         LastName = entity.LastName,
-                        VisitCount = ctx.Visits.Where(visit => visit.VisitorID == entity.VisitorID).Count()
+                        VisitCount = ctx.Visits.Where(visit => visit.VisitorID == entity.VisitorID).Count(),
+                        Games = games
                     };
                 }
                 else

@@ -1,6 +1,7 @@
 ﻿using StadiumTracker.Data;
 using StadiumTracker.Models.GameModels;
 using StadiumTracker.Models.TeamModels;
+using StadiumTracker.Models.VisitorModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -90,6 +91,30 @@ namespace StadiumTracker.Services
                 var orderedGames = games.OrderBy(game => game.DateOfGame).ToArray();
 
                 return orderedGames;
+            }
+        }
+
+        public IEnumerable<VisitorDetail> GetGameVisitors(int gameID)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var visitors = ctx.Visits
+                    .Where(visit => visit.GameID == gameID)
+                    .Select(entity =>
+                        new VisitorDetail
+                        {
+                            VisitorID = entity.VisitorID,
+                            FirstName = entity.Visitor.FirstName,
+                            LastName = entity.Visitor.LastName,
+                        }).ToArray();
+
+                foreach (var visitor in visitors)
+                {
+                    visitor.VisitCount = 
+                        ctx.Visits.Where(visit => visit.VisitorID == visitor.VisitorID).Count();
+                }
+
+                return visitors;
             }
         }
 

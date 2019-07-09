@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNet.Identity;
 using StadiumTracker.Models.GameModels;
+using StadiumTracker.Models.VisitorModels;
 using StadiumTracker.Services;
 using System;
 using System.Collections.Generic;
@@ -11,6 +12,7 @@ using System.Web.Http;
 namespace StadiumTracker.WebAPI.Controllers
 {
     [Authorize]
+    [RoutePrefix("api/Game")]
     public class GameController : ApiController
     {
         public IHttpActionResult Get()
@@ -27,6 +29,17 @@ namespace StadiumTracker.WebAPI.Controllers
             GameService service = CreateGameService();
 
             return Ok(service.GetGameByID(id.Value));
+        }
+
+        [Route("{id}/Visitors")]
+        public IHttpActionResult GetVisitorsByGame(int? id)
+        {
+            if (id == null)
+                return BadRequest();
+
+            GameService service = CreateGameService();
+
+            return Ok(service.GetGameVisitors(id.Value));
         }
 
         public IHttpActionResult Post(GameCreate model)
